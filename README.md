@@ -25,3 +25,13 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Creating a new Angular project
+
+Run `ng new project-name` to create a new project.
+
+This will step you through a few configuration options and then create a new folder with the same name as your chosen `project-name`.
+
+Run `npm install` to install the project dependencies. Then `ng build` to build the project.
+
+You may need to install sass `npm install -D sass`.
