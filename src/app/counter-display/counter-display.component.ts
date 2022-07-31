@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CounterService } from 'src/services/counter.service';
 
 @Component({
   selector: 'app-counter-display',
   templateUrl: './counter-display.component.html',
   styleUrls: ['./counter-display.component.scss']
 })
-export class CounterDisplayComponent implements OnInit {
+export class CounterDisplayComponent {
 
-  constructor() { }
+  constructor(private counterService: CounterService) { }
 
-  ngOnInit() {
+  displayCount(): number {
+    return this.counterService.getCount();
+  }
+
+  incrementCount(): void {
+    this.counterService.incrementCount();
   }
 
 }

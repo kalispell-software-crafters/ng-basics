@@ -22,4 +22,10 @@ describe('CounterDisplayComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should increment count', () => {
+    expect(component.displayCount()).toBe(0);
+    component.incrementCount();
+    expect(component.displayCount()).toBe(1);
+  });
 });
