@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Observable, of } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -10,8 +11,8 @@ export class ObservableService {
         this.stream.push(1, 2, 3, 4);
     }
 
-    getStream(): number[] {
-        return this.stream;
+    getStream(): Observable<number[]> {
+        return of(this.stream);
     }
 
     addToStream(num: number): void {

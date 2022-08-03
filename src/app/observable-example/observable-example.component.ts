@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable, of, pipe } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { ObservableService } from 'src/services/observable.service';
 
 @Component({
@@ -43,13 +43,8 @@ export class ObservableExampleComponent{
     // }, 2000);
   }
 
-  getStream(): string {
-    const numbers: number[] = [];
-    
-    of(...this.observableService.getStream())
-      .subscribe((number: number) => { numbers.push(number) });
-
-    return numbers.join(', ');
+  getStream(): Observable<number[]> {
+    return this.observableService.getStream();
   }
 
   addToStream(num: string): void {
@@ -60,12 +55,13 @@ export class ObservableExampleComponent{
     // See https://angular.io/guide/rx-library
     const nums = of(1, 2, 3);
 
-    const squareValues = pipe(
+    const mapValues = pipe(
       map((val: number) => val * val), 
-      map((val: number) => val + 1)
+      map((val: number) => val + 1),
+      filter((val: number) => val % 2 == 0)
     );
-    const squaredNums = squareValues(nums);
+    const transformedNums = mapValues(nums);
 
-    squaredNums.subscribe(x => console.log("Map example: " + x));
+    transformedNums.subscribe(x => console.log("Map example: " + x));
   }
 }
