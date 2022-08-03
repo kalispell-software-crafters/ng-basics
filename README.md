@@ -1,6 +1,6 @@
 # NgBasics
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
+This is just a simple example project to demonstrate the basics of Angular and some aspects of Observables. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3. 
 
 ## Development server
 
