@@ -26,7 +26,7 @@ export class ObservableExampleComponent{
         console.log("Incoming value is: ", incomingValue);
       },
       error: (error) => console.error(error.message),
-      compelte: () => console.log("The observable has completed emitting values.")
+      complete: () => console.log("The observable has completed emitting values.")
     }
 
     const simpleObserver = this.simpleObservable.subscribe(observer);
@@ -60,6 +60,7 @@ export class ObservableExampleComponent{
       map((val: number) => val + 1),
       filter((val: number) => val % 2 == 0)
     );
+    
     const transformedNums = mapValues(nums);
 
     transformedNums.subscribe(x => console.log("Map example: " + x));
