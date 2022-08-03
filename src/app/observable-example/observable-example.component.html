@@ -3,5 +3,5 @@
 </h2>
 <p><input type="text" id="newValue" name="newValue" #newValue></p>
 <button (click)="addToStream(newValue.value)">Add Number</button>
-<div *ngFor="let num of getStream() | async"><p>{{ num }}</p></div>
+<p *ngFor="let num of getStream() | async">{{ num }}</p>
 <button (click)="mapExample()">Run Map Example (see logs)</button>
