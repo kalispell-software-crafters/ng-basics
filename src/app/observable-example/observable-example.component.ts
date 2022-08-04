@@ -8,26 +8,31 @@ import { ObservableService } from 'src/services/observable.service';
   templateUrl: './observable-example.component.html',
   styleUrls: ['./observable-example.component.scss']
 })
-export class ObservableExampleComponent{
+export class ObservableExampleComponent {
 
   simpleObservable = new Observable((observer) => {
     observer.next(1);
-    setTimeout(() => { observer.next(2)}, 1000);
-    // setTimeout(() => { observer.error(new Error("Test error!"))}, 1000); // Once we call error no more data will be processed and complete will not be called
+    setTimeout(() => { observer.next(2); }, 1000);
+
+    // Once we call error no more data will be processed and complete will not be called
+    // setTimeout(() => { observer.error(new Error("Test error!"); )}, 1000);
+
     observer.next(3);
-    setTimeout(() => { observer.next(4)}, 2000);
-    setTimeout(() => { observer.next(55)}, 5000);
-    setTimeout(() => { observer.complete() }, 5500); // Once we call complete no more data will be processed
+    setTimeout(() => { observer.next(4); }, 2000);
+    setTimeout(() => { observer.next(55); }, 5000);
+
+    // Once we call complete no more data will be processed
+    setTimeout(() => { observer.complete(); }, 5500);
   });
 
-  constructor(private observableService: ObservableService) { 
+  constructor(private observableService: ObservableService) {
     const observer = {
       next: (incomingValue: number) => {
-        console.log("Incoming value is: ", incomingValue);
+        console.log('Incoming value is: ', incomingValue);
       },
       error: (error) => console.error(error.message),
-      complete: () => console.log("The observable has completed emitting values.")
-    }
+      complete: () => console.log('The observable has completed emitting values.'),
+    };
 
     const simpleObserver = this.simpleObservable.subscribe(observer);
 
@@ -38,7 +43,7 @@ export class ObservableExampleComponent{
     //       console.log("* Incoming value is: ", incomingValue);
     //     },
     //     (error) => console.error(error.message),
-    //     () => console.log("* The observable has completed emitting values.")
+    //     () => console.log("* The observable has completed emitting values."),
     //   );
     // }, 2000);
   }
@@ -56,13 +61,13 @@ export class ObservableExampleComponent{
     const nums = of(1, 2, 3);
 
     const mapValues = pipe(
-      map((val: number) => val * val), 
+      map((val: number) => val * val),
       map((val: number) => val + 1),
-      filter((val: number) => val % 2 == 0)
+      filter((val: number) => val % 2 === 0),
     );
-    
+
     const transformedNums = mapValues(nums);
 
-    transformedNums.subscribe(x => console.log("Map example: " + x));
+    transformedNums.subscribe(x => console.log('Map example: ' + x));
   }
 }
